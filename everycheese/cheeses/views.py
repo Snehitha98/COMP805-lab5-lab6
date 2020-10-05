@@ -2,12 +2,13 @@ from django.shortcuts import render
 from django.views.generic import ListView, DetailView
 from .models import Cheese
 from django.views.generic import CreateView
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 class CheeseListView(ListView):
     model = Cheese
 class CheeseDetailView(DetailView):
     model = Cheese
-class CheeseCreateView(CreateView):
+class CheeseCreateView(LoginRequiredMixin, CreateView):
     model = Cheese
     fields = [
         'name',
@@ -15,3 +16,6 @@ class CheeseCreateView(CreateView):
         'firmness',
         'country_of_origin',
     ]
+    class MyMixin:
+        def some_method(self):
+            return self.something
