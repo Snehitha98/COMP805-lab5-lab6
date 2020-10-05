@@ -49,10 +49,14 @@ DATABASES = {
     # The DATABASE_URL environment variables
     # expect a value in the following format:
     # DATABASE_URL=postgres://user:password@hostname_or_ip:port/database_name
-    "default": env.db(
-        "DATABASE_URL",
-        default="postgres://admin:CT13root@localhost:5432/everycheese",
-    )
+    'default': {
+    'ENGINE': 'django.db.backends.postgresql',
+    'NAME': 'postgres',
+    'USER': 'sm1552',
+    'PASSWORD': 'snehitha',
+    'HOST': '127.0.0.1',
+    'PORT': '5432',
+    }
 }
 DATABASES["default"]["ATOMIC_REQUESTS"] = True
 
@@ -81,6 +85,7 @@ THIRD_PARTY_APPS = [
     "allauth",
     "allauth.account",
     "allauth.socialaccount",
+    "django_countries",
 ]
 
 LOCAL_APPS = [
