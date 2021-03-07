@@ -5,7 +5,7 @@ Base settings to build other settings files upon.
 from pathlib import Path
 
 import environ
-
+import django_heroku
 # everycheese/
 BASE_DIR = Path(__file__).resolve(strict=True).parent.parent.parent
 APPS_DIR = BASE_DIR / "everycheese"
@@ -51,7 +51,7 @@ DATABASES = {
     # DATABASE_URL=postgres://user:password@hostname_or_ip:port/database_name
     'default': {
     'ENGINE': 'django.db.backends.postgresql',
-    'NAME': 'postgres',
+    'NAME': 'l4',
     'USER': 'sm1552',
     'PASSWORD': 'snehitha',
     'HOST': '127.0.0.1',
@@ -298,3 +298,5 @@ SOCIALACCOUNT_ADAPTER = (
 
 # Your stuff...
 # ------------------------------------------------------------------------------
+# Activate Django-Heroku.
+django_heroku.settings(locals())
